@@ -5,9 +5,17 @@ import Modal from '../Modal';
 import Input from '../Input';
 import { FoodItem } from './../../types/Food';
 
-function ModalEditFood (props: any) {
+interface ModalEditProps  {
+  isOpen: boolean;
+  setIsOpen: () => void;
+  editingFood: FoodItem;
+  handleUpdateFood: (food: FoodItem) => Promise<void>;
+ 
+}
 
-  const { isOpen, setIsOpen, editingFood, handleUpdateFood, icon  } = props;
+function ModalEditFood (props: ModalEditProps ) {
+
+  const { isOpen, setIsOpen, editingFood, handleUpdateFood  } = props;
   
   const handleSubmit = async (data:FoodItem) => {
     handleUpdateFood(data);
